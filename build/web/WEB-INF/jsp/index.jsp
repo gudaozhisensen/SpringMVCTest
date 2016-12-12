@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to Spring Web MVC project</title>
+        <title>Spring Web MVC</title>
     </head>
 
     <body>
@@ -15,5 +15,11 @@
                 the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
                 welcome page and also update the welcome-file setting in</i>
             <tt>web.xml</tt>.</p>
+        <form name="loginForm" action="${pageContext.request.contextPath}/ModelServlet" method="post">
+            <input type="hidden" name="actionType" value="login"/>
+            username:<input name="username" type="text" value="admin"/>
+            password:<input name="password" type="password" value="admin"/>
+            <input type="submit" value="login"/>
+        </form>
     </body>
 </html>

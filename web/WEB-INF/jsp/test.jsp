@@ -1,6 +1,6 @@
 <%-- 
-    Document   : success
-    Created on : 2016-12-12, 12:11:46
+    Document   : test
+    Created on : 2016-12-12, 15:44:08
     Author     : anderson
 --%>
 
@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>login success!</h1>
+        <h1>Hello World!</h1>
+        ${message}
     </body>
 </html>

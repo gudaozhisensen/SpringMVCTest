@@ -21,7 +21,7 @@ public class ModelServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String actionType = req.getParameter("actionType");
+        String actionType = req.getParameter("actionType");//使用提交表单中的actionType来决定不同的方法
         if ("login".equals(actionType)) {
             toLogin(req, resp);
         }
@@ -39,7 +39,8 @@ public class ModelServlet extends HttpServlet {
         user.setUsername(username);
         user.setPassword(password);
         if (user.login()) {
-            resp.sendRedirect(req.getContextPath() + "/success.jsp");
+//            resp.sendRedirect(req.getContextPath() + "/success.jsp");
+            resp.sendRedirect("loginResult");
         }
     }
 

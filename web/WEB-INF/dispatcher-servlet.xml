@@ -35,5 +35,6 @@
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
-
+    <bean name="/test" class="com.web.controller.TestController"/>
+    <bean name="/loginResult" class="com.web.controller.LoginController"/>
 </beans>
