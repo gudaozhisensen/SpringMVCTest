@@ -21,10 +21,7 @@ public class ModelServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String actionType = req.getParameter("actionType");//使用提交表单中的actionType来决定不同的方法
-        if ("login".equals(actionType)) {
-            toLogin(req, resp);
-        }
+        this.processRequest(req, resp);
     }
 
     @Override
@@ -33,34 +30,22 @@ public class ModelServlet extends HttpServlet {
     }
 
     private void toLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        UserBean user = new UserBean();
-        user.setUsername(username);
-        user.setPassword(password);
-        if (user.login()) {
+//        String username = req.getParameter("username");
+//        String password = req.getParameter("password");
+//        UserBean user = new UserBean();
+//        user.setUsername(username);
+//        user.setPassword(password);
+//        if (user.login()) {
 //            resp.sendRedirect(req.getContextPath() + "/success.jsp");
-            resp.sendRedirect("loginResult");
-        }
+        resp.sendRedirect("loginResult");
+//        }
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ModelServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ModelServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
+        String actionType = req.getParameter("actionType");//使用提交表单中的actionType来决定不同的方法
+        if ("login".equals(actionType)) {
+            toLogin(req, resp);
         }
     }
 
