@@ -16,6 +16,10 @@
         <servlet-name>ModelServlet</servlet-name>
         <servlet-class>com.web.servlet.ModelServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForwardingServlet</servlet-name>
+        <servlet-class>com.web.servlet.ForwardingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ModelServlet</servlet-name>
         <url-pattern>/ModelServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForwardingServlet</servlet-name>
+        <url-pattern>/ForwardingServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

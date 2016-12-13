@@ -9,17 +9,41 @@ import com.web.bean.UserBean;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
 import org.springframework.web.servlet.mvc.Controller;
 
 /**
  *
  * @author anderson
  */
-public class LoginController implements Controller {
+public class LoginController extends AbstractController {
 
-    public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
-        String username = hsr.getParameter("username");
-        String password = hsr.getParameter("password");
+    public LoginController() {
+        System.out.println("LoginController()");
+    }
+
+//    public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+//        String username = req.getParameter("username");
+//        String password = req.getParameter("password");
+//        System.out.println("username:"+username+"password:"+password);
+//        UserBean ub = new UserBean();
+//        ub.setUsername(username);
+//        ub.setPassword(password);
+//        ModelAndView mv = new ModelAndView();
+//        if (ub.login()) {
+//            mv.addObject("message", "Login Success!");
+//        } else {
+//            mv.addObject("message", "Login Fail!");
+//        }
+//        mv.setViewName("loginResult");
+//        return mv;
+//    }
+
+    @Override
+    protected ModelAndView handleRequestInternal(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        System.out.println("handleRequestInternal()");
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
         System.out.println("username:"+username+"password:"+password);
         UserBean ub = new UserBean();
         ub.setUsername(username);

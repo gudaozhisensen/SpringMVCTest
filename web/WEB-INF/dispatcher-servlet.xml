@@ -35,6 +35,26 @@
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
-    <bean name="/test" class="com.web.controller.TestController"/>
-    <bean name="/loginResult" class="com.web.controller.LoginController"/>
+    
+<!--    
+     HandlerMapping   
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>  
+   
+     HandlerAdapter   
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>  -->
+    <!--<bean name="/test" class="com.web.controller.TestController"/>-->
+    <!--<bean name="/loginResult" class="com.web.controller.LoginController"/>-->
+    <bean name="/helloWithoutReturnModelAndView" class="com.web.controller.HelloWorldWithoutReturnModelAndViewController"/>
+    
+    <!--        <bean name="/helloWithPOST" class="com.web.controller.LoginController">
+            以上配置表示只支持POST请求，如果是GET请求客户端将收到“HTTP Status 405 - Request method 'GET' not supported”
+        <property name="supportedMethods" value="POST"/>
+    </bean>-->
+    <bean name="/helloRequireSession" class="com.web.controller.LoginController">
+        <property name="requireSession" value="true"/>
+    </bean>
+    
+    <bean name="/forwardToServlet" class="org.springframework.web.servlet.mvc.ServletForwardingController"> 
+        <property name="servletName" value="forwarding"></property>  
+    </bean>
 </beans>

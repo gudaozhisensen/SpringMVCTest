@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,23 +22,29 @@ public class ModelServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doPost");
         this.processRequest(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("doGet");
+        this.processRequest(req, resp);
     }
 
     private void toLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 //        String username = req.getParameter("username");
 //        String password = req.getParameter("password");
+//        HttpSession session = req.getSession();
+//        session.setAttribute("username", username);        
+//        session.setAttribute("password", password);
 //        UserBean user = new UserBean();
 //        user.setUsername(username);
 //        user.setPassword(password);
 //        if (user.login()) {
 //            resp.sendRedirect(req.getContextPath() + "/success.jsp");
-        resp.sendRedirect("loginResult");
+        System.out.println("toLogin");
+        resp.sendRedirect("loginResult"+"?username=admin&&password=admin");
 //        }
     }
 
