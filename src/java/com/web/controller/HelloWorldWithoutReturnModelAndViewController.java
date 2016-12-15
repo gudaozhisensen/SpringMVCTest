@@ -16,6 +16,10 @@ import org.springframework.web.servlet.mvc.AbstractController;
  */
 public class HelloWorldWithoutReturnModelAndViewController extends AbstractController {
 
+    public HelloWorldWithoutReturnModelAndViewController() {
+        System.out.println("HelloWorldWithoutReturnModelAndViewController()");
+    }
+    
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         System.out.println("HelloWorldWithoutReturnModelAndViewController.handleRequestInternal()");

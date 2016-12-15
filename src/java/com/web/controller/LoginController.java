@@ -41,7 +41,7 @@ public class LoginController extends AbstractController {
 
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        System.out.println("handleRequestInternal()");
+        System.out.println("LoginController().handleRequestInternal()");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         System.out.println("username:"+username+"password:"+password);

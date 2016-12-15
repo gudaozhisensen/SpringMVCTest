@@ -43,8 +43,7 @@ public class ModelServlet extends HttpServlet {
 //        user.setPassword(password);
 //        if (user.login()) {
 //            resp.sendRedirect(req.getContextPath() + "/success.jsp");
-        System.out.println("toLogin");
-        resp.sendRedirect("loginResult"+"?username=admin&&password=admin");
+        resp.sendRedirect("login"+"?username=admin&&password=admin");
 //        }
     }
 
