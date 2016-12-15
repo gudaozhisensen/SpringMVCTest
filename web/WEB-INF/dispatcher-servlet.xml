@@ -22,8 +22,8 @@
 
     <!-- 配置自动扫描的包 表示spring监听的范围-->
     <context:component-scan base-package="com.web.controller"/>
-    
-    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    <!--加了这个org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping  之后， 多个controller 会无法识别-->
+    <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>-->
    
 <!-- 配置视图解析器 如何把handler 方法返回值解析为实际的物理视图 -->
     <bean id="viewResolver"
@@ -31,8 +31,8 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
     
-    <bean class="com.web.controller.TestController"/>
- 
+    <!--<bean class="com.web.controller.TestController"/>-->
+<!-- 
     <bean name="/helloRequireSession" class="com.web.controller.LoginController">
         <property name="requireSession" value="true"/>
     </bean>
@@ -40,7 +40,7 @@
     <bean name="/forwardToServlet" class="org.springframework.web.servlet.mvc.ServletForwardingController"> 
         <property name="servletName" value="ForwardingServlet"></property>  
     </bean>
-    
+    -->
      <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must

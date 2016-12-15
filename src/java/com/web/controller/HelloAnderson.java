@@ -20,7 +20,7 @@ public class HelloAnderson {
     }
     
     @RequestMapping("/helloanderson")
-    public String hello() {
+    public String otherMethodName() {
         System.out.println("hello anderson");
         return "anderson";
     }

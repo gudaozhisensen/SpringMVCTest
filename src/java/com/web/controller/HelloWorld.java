@@ -6,6 +6,7 @@
 package com.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 /**
  *
@@ -27,6 +28,13 @@ public class HelloWorld {
     @RequestMapping("/helloworld")
     public String hello() {
         System.out.println("HelloWorld()");
+        //return 被dispatcher-servlet.xml 中的 InternalResourceViewResolver 截获
+        return "test";
+    }
+    
+    @RequestMapping("/helloworld/{id}")
+    public String hello(@PathVariable(value="id") int id) {
+        System.out.println("HelloWorld() id:"+id);
         //return 被dispatcher-servlet.xml 中的 InternalResourceViewResolver 截获
         return "test";
     }

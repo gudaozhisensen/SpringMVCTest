@@ -15,13 +15,38 @@
                 the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
                 welcome page and also update the welcome-file setting in</i>
             <tt>web.xml</tt>.</p>
-        <form name="loginForm" action="${pageContext.request.contextPath}/ModelServlet" method="post">
-            <input type="hidden" name="actionType" value="login"/>
+
+        <form name="loginForm" action="logincontroller" method="post">
             username:<input name="username" type="text" value="admin"/>
             password:<input name="password" type="password" value="admin"/>
-            <input type="submit" value="login"/>
+            <input type="submit" value="post_login"/>
         </form>
+
+        <form name="loginForm" action="logincontroller/admin/admin" method="get">
+            username:<input name="username" type="text" value="admin"/>
+            password:<input name="password" type="password" value="admin"/>
+            <input type="submit" value="get_login"/>
+        </form>
+
+                        <form action="logincontroller/admin" method="post">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <input type="submit" value="post_DELETE"/>
+                </form>
+
+        <form  action="logincontroller/admin" method="POST">
+            <input type="hidden" name="_method" value="PUT"/>
+            <input type="submit" value="post_PUT"/>
+        </form>
+
         <a href="helloworld">hello world</a>
+        <br>
+        <a href="springmvctest/testRequestParam?username=anderson&age=20">springmvctest</a>
+        <br>
         <a href="helloanderson">anderson</a>
+        <br>
+        <a href="logincontroller">logincontroller</a>
+        <br>
+        <a href="othercontroller">othercontroller</a>
+
     </body>
 </html>
