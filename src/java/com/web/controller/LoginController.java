@@ -5,6 +5,7 @@
  */
 package com.web.controller;
 
+import com.web.bean.UserBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +29,8 @@ public class LoginController{
     
     //@RequestParam 通过绑定表单中的数据达到传参效果
     @RequestMapping(value = "logincontroller",method = RequestMethod.POST)
-    public String login(@RequestParam(value="username") String username,@RequestParam(value="password",required=true) String password){
-        System.out.println("username:"+username+" password:"+password);
+    public String login(UserBean userbean){
+        System.out.println("userbean:"+userbean.getUsername());
         return "test";
     }
 //    
