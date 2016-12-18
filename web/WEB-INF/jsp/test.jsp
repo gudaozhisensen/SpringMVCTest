@@ -14,5 +14,6 @@
     <body>
         <h1>Hello World!</h1>
         ${message}
+        time: ${time}
     </body>
 </html>

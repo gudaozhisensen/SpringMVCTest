@@ -16,21 +16,11 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 public class LoginController{
-
-    public LoginController() {
-        System.out.println("init LoginController()");
-    }
-    
-//    @RequestMapping("/logincontroller")
-//    public String login(){
-//        System.out.println("login");
-//        return "test";
-//    }
     
     //@RequestParam 通过绑定表单中的数据达到传参效果
     @RequestMapping(value = "logincontroller",method = RequestMethod.POST)
     public String login(UserBean userbean){
-        System.out.println("userbean:"+userbean.getUsername());
+        System.out.println("userbean:"+userbean);
         return "test";
     }
 //    

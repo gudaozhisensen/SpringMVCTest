@@ -46,7 +46,10 @@
         <br>
         <a href="logincontroller">logincontroller</a>
         <br>
-        <a href="othercontroller">othercontroller</a>
-
+        <a href="othercontroller">othercontroller</a><br>
+        <a href="cookiecontroller/testCookieValue">testCookieValue</a><br>
+        <a href="requestheadercontroller/testRequestHeader">testRequestHeader</a><br>
+        <a href="springmvctest/testModelAndView">testModelAndView</a><br>
+        <a href="emps">show all emps</a><br>
     </body>
 </html>

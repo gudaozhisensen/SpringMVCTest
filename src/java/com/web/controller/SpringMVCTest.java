@@ -5,24 +5,28 @@
  */
 package com.web.controller;
 
+import java.util.Date;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author anderson
  */
-@RequestMapping("/springmvctest")
-@Controller
-public class SpringMVCTest {
 
-    public SpringMVCTest() {
-        System.out.println("init SpringMVCTest()");
+@Controller
+@RequestMapping("/springmvctest")
+public class SpringMVCTest {
+    
+    @RequestMapping("/testModelAndView")
+    public ModelAndView testModelAndView(){
+        ModelAndView mav = new  ModelAndView("test");
+        mav.addObject("time", new Date());
+        return mav;
     }
-    // /springmvc/testRequestMapping
-//     @RequestMapping("/testRequestMapping/{id}")
     @RequestMapping("/testRequestMapping/{id}")
     public String testRequestMapping(@PathVariable(value = "id") int id){        
         System.out.println("testRequestMapping()  id = "+id);
