@@ -35,15 +35,13 @@ public class EmployeeController {
     @RequestMapping("/employee_edit/{id}")
     public ModelAndView employeeEdit(@PathVariable(value = "id") int id) {
         ModelAndView mav = new ModelAndView("employee_edit");
-        System.out.println("employees:" + EmployeeDao.getEmployeeById(id));
+        
         mav.addObject("employees", EmployeeDao.getEmployeeById(id));
-        HashMap genderMap = new HashMap();
-        genderMap.put("F", "Female");
-        genderMap.put("M", "Male");
-        mav.addObject("gender", genderMap);
-        HashMap departments = new HashMap();
-        departments.put("departments",DepartmentDao.getDepartments());
-        mav.addObject("departments", departments);
+        HashMap gender = new HashMap();
+        gender.put("F", "Female");
+        gender.put("M", "Male");
+        mav.addObject("gender", gender);
+        mav.addObject("departments", DepartmentDao.getDepartments());
         return mav;
     }
 

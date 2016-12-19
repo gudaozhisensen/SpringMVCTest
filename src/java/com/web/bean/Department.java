@@ -36,6 +36,6 @@ public class Department {
     }
 
     public String toString() {
-        return "Department [id=" + id + ", departmentName=" + departmentName + "]";
+        return "id=" + id + ", departmentName=" + departmentName + "";
     }
 }

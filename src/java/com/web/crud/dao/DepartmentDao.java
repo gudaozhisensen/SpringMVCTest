@@ -39,7 +39,7 @@ public class DepartmentDao {
     public void update(Integer id){
         
     }
-    public static Collection getDepartments(){
+    public static Collection<Department> getDepartments(){
         return departments.values();
     }
 }

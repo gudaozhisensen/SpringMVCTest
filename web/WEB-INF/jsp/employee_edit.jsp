@@ -23,11 +23,11 @@
             <br>
             Email:<form:input path="email"/>
             <br>
-            Gender:<form:radiobuttons path="gender" items="${gender}"/>
+            Gender:<form:select path="gender" items="${gender}"/>
             <br>
             DepartmentID:<form:input path="department.id"/>
             <br>
-            DepartmentName:<form:select itemValue="department.id"  itemLabel="${department.departmentName}"  path="department.id" items="${departments}"   />
+            DepartmentName:<form:select itemValue="id" itemLabel="departmentName" path="department.id" items="${departments}"   />
             <br>
             <input type="submit" value="save"/>
         </form:form>
