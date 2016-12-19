@@ -5,15 +5,25 @@
  */
 package com.web.crud.dao;
 
+import com.web.bean.Department;
+import java.util.Collection;
+import java.util.HashMap;
+
 /**
  *
  * @author FEng
  */
-class DepartmentDao {
-    private Integer initId;
-
-    public DepartmentDao(Integer initId) {
-        this.initId = initId;
+public class DepartmentDao {
+    private Integer Id;
+    private static HashMap  departments;
+    static{
+        departments = new HashMap();
+         
+        departments.put(101, new Department(101, "D-AA"));
+        departments.put(102, new Department(102, "D-BB"));
+        departments.put(103, new Department(103, "D-CC"));
+        departments.put(104, new Department(104, "D-DD"));
+        departments.put(105, new Department(105, "D-EE"));
     }
     
     public void add(Integer id){
@@ -28,5 +38,8 @@ class DepartmentDao {
     
     public void update(Integer id){
         
+    }
+    public static Collection getDepartments(){
+        return departments.values();
     }
 }

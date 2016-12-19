@@ -7,13 +7,15 @@ package com.web.controller;
 
 import com.web.bean.Department;
 import com.web.bean.Employee;
-import com.web.crud.dao.EmployeeDao;
+import com.web.crud.dao.*;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -23,26 +25,48 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class EmployeeController {
 
-    @RequestMapping("/emps1")
-    public ModelAndView employees() {
-        ModelAndView mav = new ModelAndView("employees");
+    @RequestMapping("/employee_edit/employee_save")
+    public String employeeSave(Employee employee) {
+        System.out.println("employeeSave()");
+        System.out.println(employee.getId());
+        return "employees";
+    }
 
-        HashMap<String, Collection> hm = new HashMap();
-        hm.put("employees", EmployeeDao.getAllEmployees());
-//        hm.put("gender", "0");
-//        hm.put("email", "262643608@qq.com");
-        Iterator it = hm.get("employees").iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
-//        System.out.println("id:" + hm.get("employees"));
-//        mav.addObject("emp", hm);
+    @RequestMapping("/employee_edit/{id}")
+    public ModelAndView employeeEdit(@PathVariable(value = "id") int id) {
+        ModelAndView mav = new ModelAndView("employee_edit");
+        System.out.println("employees:" + EmployeeDao.getEmployeeById(id));
+        mav.addObject("employees", EmployeeDao.getEmployeeById(id));
+        HashMap genderMap = new HashMap();
+        genderMap.put("F", "Female");
+        genderMap.put("M", "Male");
+        mav.addObject("gender", genderMap);
+        HashMap departments = new HashMap();
+        departments.put("departments",DepartmentDao.getDepartments());
+        mav.addObject("departments", departments);
         return mav;
     }
+
+    @RequestMapping("/emps1")
+    public ModelAndView employees_() {
+        ModelAndView mav = new ModelAndView("employees_");
+//        mav.addObject("employees", hm);
+        mav.addObject("employees", EmployeeDao.getAllEmployees());
+        return mav;
+    }
+
     @RequestMapping("/emps")
-    public String employees(Map<String, Object> map) {
-        map.put("employees", EmployeeDao.getAllEmployees());
-        System.out.println("map:"+map.get("employees"));
+    public String employees(HashMap hm) {//方法里的参数会传到页面上去
+        hm.put("employees", EmployeeDao.getAllEmployees());
         return "employees";
+    }
+
+    @RequestMapping("/emps2")
+    public ModelAndView employees_2() {
+        ModelAndView mav = new ModelAndView("employees_2");
+        HashMap hm = new HashMap();
+        hm.put("employees", EmployeeDao.getAllEmployees());
+        mav.addObject("employees", hm);
+        return mav;
     }
 }

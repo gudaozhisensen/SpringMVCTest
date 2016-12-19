@@ -15,6 +15,7 @@
         <c:if test="${empty requestScope.employees}">
             没有员工信息
         </c:if>
+
         <c:if test="${!empty requestScope.employees}">
             <table border="1">
                 <td>ID</td>
@@ -23,6 +24,8 @@
                 <td>Gender</td>
                 <td>DepartmentID</td>
                 <td>DepartmentName</td>
+                <td>edit</td>
+                <td>delete</td>
                 <c:forEach  items="${requestScope.employees}" var="empl">
                     <tr>
                         <td>${empl.id}</td>
@@ -31,6 +34,8 @@
                         <td>${empl.gender}</td>
                         <td>${empl.department.id}</td>
                         <td>${empl.department.departmentName}</td>
+                        <td><a href="employee_edit/${empl.id}">edit</a></td>
+                        <td><a href="employee_delete">delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
