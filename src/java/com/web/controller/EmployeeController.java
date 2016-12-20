@@ -26,18 +26,34 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class EmployeeController {
 
+    private EmployeeDao eDao = EmployeeDao.getInstance();
+
     @RequestMapping(value = "/employee_edit/employee_update", method = RequestMethod.POST)
-    public String employeeUpdate(Employee employee,Department department) {
-        employee.setDepartment((Department)DepartmentDao.getDepartmentById(employee.getDepartment().getDepartment_id()));
-        EmployeeDao.update(employee);
-//        System.out.println(EmployeeDao.getEmployeeById(id));
+    public String employeeUpdate(Employee employee, Department department) {
+        employee.setDepartment((Department) DepartmentDao.getDepartmentById(employee.getDepartment().getDepartment_id()));
+        if (employee.getEmployee_id()!=null) {//如果ID不为空，就update
+            eDao.update(employee);
+        } else {//如果ID为空，则新增
+            eDao.add(employee);
+        }
         return "redirect:/emps";
+    }
+
+    @RequestMapping("/employee_edit/")
+    public ModelAndView employeeEdit() {
+        ModelAndView mav = new ModelAndView("employee_edit");
+        mav.addObject("employees", new Employee());
+        HashMap gender = new HashMap();
+        gender.put("F", "Female");
+        gender.put("M", "Male");
+        mav.addObject("gender", gender);
+        mav.addObject("departments", DepartmentDao.getDepartments());
+        return mav;
     }
 
     @RequestMapping("/employee_edit/{id}")
     public ModelAndView employeeEdit(@PathVariable(value = "id") int id) {
         ModelAndView mav = new ModelAndView("employee_edit");
-        
         mav.addObject("employees", EmployeeDao.getEmployeeById(id));
         HashMap gender = new HashMap();
         gender.put("F", "Female");
@@ -47,26 +63,17 @@ public class EmployeeController {
         return mav;
     }
 
-    @RequestMapping("/emps1")
-    public ModelAndView employees_() {
-        ModelAndView mav = new ModelAndView("employees_");
-//        mav.addObject("employees", hm);
-        mav.addObject("employees", EmployeeDao.getAllEmployees());
-        return mav;
-    }
-
     @RequestMapping("/emps")
-    public String employees(HashMap hm) {//方法里的参数会传到页面上去
+    public String showAllEmployees(HashMap hm) {//方法里的参数会传到页面上去
         hm.put("employees", EmployeeDao.getAllEmployees());
         return "employees";
     }
 
-    @RequestMapping("/emps2")
-    public ModelAndView employees_2() {
-        ModelAndView mav = new ModelAndView("employees_2");
-        HashMap hm = new HashMap();
-        hm.put("employees", EmployeeDao.getAllEmployees());
-        mav.addObject("employees", hm);
+    @RequestMapping("/employee_delete/{id}")
+    public ModelAndView employeeDelete(@PathVariable(value = "id") int id) {
+        ModelAndView mav = new ModelAndView("redirect:/emps");
+        eDao.delete(id);
         return mav;
     }
+
 }

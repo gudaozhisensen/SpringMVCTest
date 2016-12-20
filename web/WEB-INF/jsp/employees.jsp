@@ -35,9 +35,10 @@
                         <td>${empl.department.department_id}</td>
                         <td>${empl.department.departmentName}</td>
                         <td><a href="employee_edit/${empl.employee_id}">edit</a></td>
-                        <td><a href="employee_delete">delete</a></td>
+                        <td><a href="employee_delete/${empl.employee_id}">delete</a></td>
                     </tr>
                 </c:forEach>
+                    <a href="employee_edit/">Add a new employee</a><br>
             </table>
         </c:if>            
     </body>

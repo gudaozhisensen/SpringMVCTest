@@ -50,8 +50,6 @@
         <a href="cookiecontroller/testCookieValue">testCookieValue</a><br>
         <a href="requestheadercontroller/testRequestHeader">testRequestHeader</a><br>
         <a href="springmvctest/testModelAndView">testModelAndView</a><br>
-        <a href="emps1">show all emps1</a><br>
         <a href="emps">show all emps</a><br>
-        <a href="emps2">show all emps2</a><br>
     </body>
 </html>

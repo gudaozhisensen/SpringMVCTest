@@ -9,6 +9,7 @@ import com.web.bean.Department;
 import com.web.bean.Employee;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -16,11 +17,12 @@ import java.util.HashMap;
  */
 public class EmployeeDao {
 
-    
+    public static EmployeeDao getInstance() {
+        return new EmployeeDao();
+    }
 
-    private Integer id;
     private static HashMap employees;
-
+    private static int init_id=1006;
     static {
         employees = new HashMap();
 //        employees.put(1001, new Employee(1001, "E-AA", "aa@163.com", 'F', new Department(101, "D-AA")));
@@ -38,27 +40,28 @@ public class EmployeeDao {
     public EmployeeDao() {
     }
 
-    public void add(Integer id) {
-
+    public void add(Employee employee) {
+        employee.setEmployee_id(init_id);
+        employees.put(init_id++, employee);
     }
 
     public void delete(Integer id) {
+        employees.remove(id);
     }
 
     public void get(Integer id) {
     }
 
-    public static void update(Employee employee) {
+    public void update(Employee employee) {
         employees.remove(employee.getEmployee_id());
         employees.put(employee.getEmployee_id(), employee);
     }
-    
-    
 
     public static Collection getAllEmployees() {
         return employees.values();
     }
-    public static Object getEmployeeById(int id){
+
+    public static Object getEmployeeById(int id) {
 //        HashMap hm = new HashMap();
         return employees.get(id);
     }
