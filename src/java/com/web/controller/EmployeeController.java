@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,7 +28,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class EmployeeController {
 
     private EmployeeDao eDao = EmployeeDao.getInstance();
-
+    @ResponseBody//将内容或对象作为 HTTP 响应正文返回，并调用适合HttpMessageConverter的Adapter转换对象，写入输出流。
+    @RequestMapping("/testJson")
+    public Collection testJson(){
+        System.out.println("testJson()");
+        return EmployeeDao.getAllEmployees();
+    }
     @RequestMapping(value = "/employee_edit/employee_update", method = RequestMethod.POST)
     public String employeeUpdate(Employee employee, Department department) {
         employee.setDepartment((Department) DepartmentDao.getDepartmentById(employee.getDepartment().getDepartment_id()));

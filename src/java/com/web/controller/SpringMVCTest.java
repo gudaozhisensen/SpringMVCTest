@@ -23,22 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/springmvctest")
 public class SpringMVCTest {
     
-//    @RequestMapping("/i18n")
-//    public String testi18n(Locale locale){
-////        ResourceBundleMessageSource ms = null;
-////        String str = ms.getMessage("i18n.username",null, locale);
-////        System.out.println("str:"+str);
-//        return "i18n";
-//    }
-//    
-//     @RequestMapping("/i18n2")
-//    public String testi18n2(Locale locale){
-////        ResourceBundleMessageSource ms = null;
-////        String str = ms.getMessage("i18n.username",null, locale);
-////        System.out.println("str:"+str);
-//        return "i18n2";
-//    }
-    
     @RequestMapping("/testModelAndView")
     public ModelAndView testModelAndView(){
         ModelAndView mav = new  ModelAndView("test");

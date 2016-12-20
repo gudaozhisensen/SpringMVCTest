@@ -6,8 +6,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Spring Web MVC</title>
-        <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
-        
     </head>
 
     <body>
@@ -50,5 +48,6 @@
         <a href="i18n?locale=en_US">英文</a>
         <a href="i18n?locale=zh_CN">中文</a>
         <br>
+        <a href="upload">上传</a>
     </body>
 </html>
