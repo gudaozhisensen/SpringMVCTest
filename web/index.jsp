@@ -6,16 +6,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Spring Web MVC</title>
+        <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+        
     </head>
 
     <body>
-        <p>Hello! This is the default welcome page for a Spring Web MVC project.</p>
-        <p><i>To display a different welcome page for this project, modify</i>
-            <tt>index.jsp</tt> <i>, or create your own welcome page then change
-                the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
-                welcome page and also update the welcome-file setting in</i>
-            <tt>web.xml</tt>.</p>
-
         <form name="loginForm" action="logincontroller" method="post">
             username:<input name="username" type="text" value="admin"/>
             password:<input name="password" type="password" value="admin"/>
@@ -51,5 +46,9 @@
         <a href="requestheadercontroller/testRequestHeader">testRequestHeader</a><br>
         <a href="springmvctest/testModelAndView">testModelAndView</a><br>
         <a href="emps">show all emps</a><br>
+        <h3>国际化：</h3>
+        <a href="i18n?locale=en_US">英文</a>
+        <a href="i18n?locale=zh_CN">中文</a>
+        <br>
     </body>
 </html>

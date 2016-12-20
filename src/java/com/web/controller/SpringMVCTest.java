@@ -6,6 +6,8 @@
 package com.web.controller;
 
 import java.util.Date;
+import java.util.Locale;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,22 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/springmvctest")
 public class SpringMVCTest {
+    
+//    @RequestMapping("/i18n")
+//    public String testi18n(Locale locale){
+////        ResourceBundleMessageSource ms = null;
+////        String str = ms.getMessage("i18n.username",null, locale);
+////        System.out.println("str:"+str);
+//        return "i18n";
+//    }
+//    
+//     @RequestMapping("/i18n2")
+//    public String testi18n2(Locale locale){
+////        ResourceBundleMessageSource ms = null;
+////        String str = ms.getMessage("i18n.username",null, locale);
+////        System.out.println("str:"+str);
+//        return "i18n2";
+//    }
     
     @RequestMapping("/testModelAndView")
     public ModelAndView testModelAndView(){

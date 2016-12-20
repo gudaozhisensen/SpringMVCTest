@@ -5,74 +5,51 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/context
-                http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/context/spring-context.xsd
             http://www.springframework.org/schema/beans 
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/aop 
             http://www.springframework.org/schema/aop/spring-aop.xsd
             http://www.springframework.org/schema/tx 
-            http://www.springframework.org/schema/tx/spring-tx.xsd" 
-            xmlns:context="http://www.springframework.org/schema/context">
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
-<!--加了<context:component-scan base-package="com.web.controller"/> 之后，出现了'context:component-scan' 未声明 的错误，把xsi:schemaLocation替换了就好了-->
-<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"-->
+    <!--加了<context:component-scan base-package="com.web.controller"/> 之后，出现了'context:component-scan' 未声明 的错误，把xsi:schemaLocation替换了就好了-->
+    <!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"-->
 
     <!-- 配置自动扫描的包 表示spring监听的范围-->
     <context:component-scan base-package="com.web.controller"/>
     <!--加了这个org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping  之后， 多个controller 会无法识别-->
     <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>-->
    
-<!-- 配置视图解析器 如何把handler 方法返回值解析为实际的物理视图 -->
+    <!-- 配置视图解析器 如何把handler 方法返回值解析为实际的物理视图 -->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
     
-    <!--<bean class="com.web.controller.TestController"/>-->
-<!-- 
-    <bean name="/helloRequireSession" class="com.web.controller.LoginController">
-        <property name="requireSession" value="true"/>
+    
+    <!--用于国际化处理的beanResourceBundlMessageSource,property中的name是与注入类中的属性名一致,value决定了后面国际化文件的名称-->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="i18n"></property> 
     </bean>
     
-    <bean name="/forwardToServlet" class="org.springframework.web.servlet.mvc.ServletForwardingController"> 
-        <property name="servletName" value="ForwardingServlet"></property>  
-    </bean>
-    -->
-     <!--
-    Most controllers will use the ControllerClassNameHandlerMapping above, but
-    for the index controller we are using ParameterizableViewController, so we must
-    define an explicit mapping for it.
-    -->
-<!--    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <props>
-                <prop key="index.htm">indexController</prop>
-            </props>
-        </property>
-    </bean>-->
-<!--
-    The index controller.
-    -->
-<!--    <bean name="indexController"
-          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="index" />-->
+    <!-- 配置SessionLocaleResolver -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+
     
-<!--    
-     HandlerMapping   
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>  
-   
-     HandlerAdapter   
-    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>  -->
-    <!--<bean name="/_test" class="com.web.controller.TestController"/>-->
-       <!--<bean name="/loginResult" class="com.web.controller.LoginController"/>-->
-    <!--<bean name="/helloWithoutReturnModelAndView" class="com.web.controller.HelloWorldWithoutReturnModelAndViewController"/>-->
-    
-    <!--        <bean name="/helloWithPOST" class="com.web.controller.LoginController">
-            以上配置表示只支持POST请求，如果是GET请求客户端将收到“HTTP Status 405 - Request method 'GET' not supported”
-        <property name="supportedMethods" value="POST"/>
-    </bean>-->
+    <!-- 配置LocaleChangeInterceptor -->
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
+    </mvc:interceptors>
+    <!--如果没有<mvc:annotation-driven/>，那么所有的@Controller注解可能就没有解析-->
+    <mvc:annotation-driven/>
+    <mvc:view-controller path="/i18n" view-name="i18n"/> 
 </beans>
 
