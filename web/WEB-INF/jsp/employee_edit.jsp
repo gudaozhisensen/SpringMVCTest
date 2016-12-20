@@ -16,20 +16,18 @@
 
     </style>
     <body>
-        <form:form modelAttribute="employees" action="employee_save">
-            ID:<form:input readonly="true"  path="id" />
+        <form:form method="POST" modelAttribute="employees" action="employee_update">
+            ID:<form:hidden readonly="true"  path="employee_id" />
             <br>
             EmployeeName:<form:input path="employeeName"/>
             <br>
             Email:<form:input path="email"/>
             <br>
-            Gender:<form:select path="gender" items="${gender}"/>
+            Gender:<form:radiobuttons path="gender" items="${gender}"/>
             <br>
-            DepartmentID:<form:input path="department.id"/>
+            Department:<form:select itemValue="department_id" itemLabel="departmentName" path="department.department_id" items="${departments}"   />
             <br>
-            DepartmentName:<form:select itemValue="id" itemLabel="departmentName" path="department.id" items="${departments}"   />
-            <br>
-            <input type="submit" value="save"/>
+            <input type="submit" value="update"/>
         </form:form>
     </body>
 </html>

@@ -6,6 +6,7 @@
 package com.web.crud.dao;
 
 import com.web.bean.Department;
+import com.web.bean.Employee;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -14,6 +15,10 @@ import java.util.HashMap;
  * @author FEng
  */
 public class DepartmentDao {
+
+    public static void save(Employee employee) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private Integer Id;
     private static HashMap  departments;
     static{
@@ -41,5 +46,9 @@ public class DepartmentDao {
     }
     public static Collection<Department> getDepartments(){
         return departments.values();
+    }
+    
+    public static Object getDepartmentById(Integer id){
+        return departments.get(id);
     }
 }

@@ -28,13 +28,13 @@
                 <td>delete</td>
                 <c:forEach  items="${requestScope.employees}" var="empl">
                     <tr>
-                        <td>${empl.id}</td>
+                        <td>${empl.employee_id}</td>
                         <td>${empl.employeeName}</td>
                         <td>${empl.email}</td>
                         <td>${empl.gender}</td>
-                        <td>${empl.department.id}</td>
+                        <td>${empl.department.department_id}</td>
                         <td>${empl.department.departmentName}</td>
-                        <td><a href="employee_edit/${empl.id}">edit</a></td>
+                        <td><a href="employee_edit/${empl.employee_id}">edit</a></td>
                         <td><a href="employee_delete">delete</a></td>
                     </tr>
                 </c:forEach>

@@ -11,20 +11,23 @@ package com.web.bean;
  */
 public class Department {
 
-    private int id;//部门ID
+    private int department_id;//部门ID
     private String departmentName;//部门名称
 
-    public Department(int id, String departmentName) {
-        this.id = id;
+    public Department(int department_id, String departmentName) {
+        this.department_id = department_id;
         this.departmentName = departmentName;
     }
 
-    public int getId() {
-        return id;
+    public Department() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getDepartment_id() {
+        return department_id;
+    }
+
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
     }
 
     public String getDepartmentName() {
@@ -36,6 +39,6 @@ public class Department {
     }
 
     public String toString() {
-        return "id=" + id + ", departmentName=" + departmentName + "";
+        return "Department : [department_id=" + department_id + ", departmentName=" + departmentName + "]";
     }
 }

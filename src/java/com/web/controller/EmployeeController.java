@@ -15,6 +15,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,11 +26,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class EmployeeController {
 
-    @RequestMapping("/employee_edit/employee_save")
-    public String employeeSave(Employee employee) {
-        System.out.println("employeeSave()");
-        System.out.println(employee.getId());
-        return "employees";
+    @RequestMapping(value = "/employee_edit/employee_update", method = RequestMethod.POST)
+    public String employeeUpdate(Employee employee,Department department) {
+        employee.setDepartment((Department)DepartmentDao.getDepartmentById(employee.getDepartment().getDepartment_id()));
+        EmployeeDao.update(employee);
+//        System.out.println(EmployeeDao.getEmployeeById(id));
+        return "redirect:/emps";
     }
 
     @RequestMapping("/employee_edit/{id}")

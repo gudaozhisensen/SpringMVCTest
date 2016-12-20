@@ -12,38 +12,37 @@ import java.util.Date;
  * @author FEng
  */
 public class Employee {
-    private Integer id;//员工ID
+    private Integer employee_id;//员工ID
     private String employeeName;//员工名字
     private String email;//员工邮箱
-    private char gender;//员工性别
+    private String gender;//员工性别
     private Department department;//员工所属部门
     private Date birth;//员工生日
     private Float salary;//员工薪水
     private boolean isNewEmployee;
 
-    public Employee(Integer id, String employeeName, String email, char gender, Department department) {
-        this.id = id;
+    public Employee(Integer employee_id, String employeeName, String email, String gender, Department department) {
+        this.employee_id = employee_id;
         this.employeeName = employeeName;
         this.email = email;
         this.gender = gender;
         this.department = department;
     }
 
-    
-    
+    public Employee() {
+    }
+
     public boolean isIsNewEmployee() {
         return isNewEmployee;
     }
-    
-    public Integer getId() {
-        return id;
+
+    public Integer getEmployee_id() {
+        return employee_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmployee_id(Integer employee_id) {
+        this.employee_id = employee_id;
     }
-
-    
 
     public String getEmployeeName() {
         return employeeName;
@@ -61,11 +60,11 @@ public class Employee {
         this.email = email;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -94,7 +93,7 @@ public class Employee {
     }
 
      public String toString() {
-        return "Employee [id=" + id + ", employeeName=" + employeeName + ", email="
+        return "Employee [employee_id=" + employee_id + ", employeeName=" + employeeName + ", email="
                 + email + ", gender=" + gender + ", department=" + department
                 + ", birth=" + birth + ", salary=" + salary + "]";
     }
